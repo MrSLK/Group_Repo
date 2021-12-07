@@ -87,12 +87,12 @@ function calc(type) {
 
 const clearInput = () => {
   document.getElementById("detail").value = "";
-  document.getElementById("amount").value = 0;
+  document.getElementById("amount").value = "";
 }
 
 const reset = () => {
   document.getElementById("detail").value = "";
-  document.getElementById("amount").value = 0;
+  document.getElementById("amount").value = "";
   document.getElementById("tableBody").innerHTML = "";
 
   localStorage.setItem("type", "");
