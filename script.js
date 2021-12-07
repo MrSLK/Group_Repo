@@ -77,9 +77,12 @@ function calc(type) {
   // TODO add array to local storage
   
   transactions.push({ type, detail, amount });
+  console.log(transactions);
+
   getResults();
   displayTable();
   clearInput();
+  store();
 }
 
 const clearInput = () => {
@@ -103,5 +106,11 @@ const reset = () => {
   document.getElementById("amountTotal").innerHTML = "R0";
 
 }
+
+function store () {
+  localStorage.setItem("detail", detail);
+  localStorage.setItem("amount", amount);
+}
+
 
 
