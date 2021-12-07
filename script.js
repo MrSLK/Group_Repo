@@ -47,6 +47,8 @@ function getResults () {
     let expense = 0;
     let amount = 0;
 
+    
+
    for (let i = 0; i < transactions.length; i++) {
 
     if (transactions[i].type === "Income") {
@@ -69,20 +71,18 @@ function calc(type) {
 
   if (!isValid()) return;
 
-  localStorage.setItem("type", type);
-  localStorage.setItem("detail", detail);
-  localStorage.setItem("amount", amount);
-
 
   // TODO add array to local storage
   
   transactions.push({ type, detail, amount });
-  console.log(transactions);
+
+  // console.log(transactions);
 
   getResults();
   displayTable();
   clearInput();
   store();
+  getLocalStorage();
 }
 
 const clearInput = () => {
@@ -95,9 +95,7 @@ const reset = () => {
   document.getElementById("amount").value = "";
   document.getElementById("tableBody").innerHTML = "";
 
-  localStorage.setItem("type", "");
-  localStorage.setItem("detail", "");
-  localStorage.setItem("amount", 0);
+  localStorage.setItem("transactions", []);
 
   transactions = [];
 
@@ -108,9 +106,34 @@ const reset = () => {
 }
 
 function store () {
-  localStorage.setItem("detail", detail);
-  localStorage.setItem("amount", amount);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  /* localStorage.setItem("detail", detail);
+  localStorage.setItem("amount", amount); */
 }
 
+const getLocalStorage = () => {
+  if(localStorage.getItem("transactions") === null);
+    localStorage.getItem("transactions", JSON.stringify([]));
+
+  let localData = JSON.parse(localStorage.getItem("transactions"));
+
+  // returns array of localStorage data
+  return localData;
+}
+
+
+window.addEventListener("load", () =>{
+
+   if(transactions.length === 0) {
+     transactions.push(...getLocalStorage());
+   }
+
+  getResults();
+  displayTable();
+  
+
+   console.log(transactions)
+  
+});
 
 
