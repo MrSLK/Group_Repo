@@ -95,7 +95,7 @@ const reset = () => {
   document.getElementById("amount").value = "";
   document.getElementById("tableBody").innerHTML = "";
 
-  localStorage.setItem("transactions", []);
+  localStorage.clear();
 
   transactions = [];
 
@@ -130,10 +130,7 @@ window.addEventListener("load", () =>{
 
   getResults();
   displayTable();
-  
-
-   console.log(transactions)
-  
+    
 });
 
 
