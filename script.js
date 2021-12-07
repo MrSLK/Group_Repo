@@ -99,9 +99,9 @@ const reset = () => {
 
   transactions = [];
 
-  document.getElementById("incomeTotal").innerHTML = "R0";
-  document.getElementById("expenseTotal").innerHTML = "R0";
-  document.getElementById("amountTotal").innerHTML = "R0";
+  document.getElementById("incomeTotal").innerHTML = "0";
+  document.getElementById("expenseTotal").innerHTML = "0";
+  document.getElementById("amountTotal").innerHTML = "0";
 
 }
 
